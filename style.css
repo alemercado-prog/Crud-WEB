@@ -1,0 +1,58 @@
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.btn-editar {
+    background-color: #007bff;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+}
