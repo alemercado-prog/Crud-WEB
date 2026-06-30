@@ -8,7 +8,7 @@ $metodo = $_SERVER["REQUEST_METHOD"];
 
 if ($metodo == "GET") {
     $stmt = $conexion->query("SELECT * FROM usuarios");
-    $usuarios = $stmt->fetchALL(PDO::FETCH_ASSOC);
+    $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($usuarios);
 } elseif ($metodo == "POST") {
     $datos = json_decode(file_get_contents("php://input"));
