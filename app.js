@@ -16,8 +16,9 @@ async function cargarUsuarios() {
                 <td>${usuario.email}</td>
                 <td>${usuario.telefono}</td>
                 <td>${usuario.fecha_nacimiento}</td>
+                <td>${usuario.nacionalidad}</td>
                 <td>
-                    <button class="btn-editar" onclick="prepararEdicion(${usuario.id}, '${usuario.nombre}', '${usuario.apellido}', '${usuario.email}', '${usuario.telefono}', '${usuario.fecha_nacimiento}')">Editar</button>
+                    <button class="btn-editar" onclick="prepararEdicion(${usuario.id}, '${usuario.nombre}', '${usuario.apellido}', '${usuario.email}', '${usuario.telefono}', '${usuario.fecha_nacimiento}', '${usuario.nacionalidad}')">Editar</button>
                     <button class="btn-eliminar" onclick="eliminarUsuario(${usuario.id})">Eliminar</button>
                 </td>
             </tr>
@@ -34,6 +35,7 @@ formulario.addEventListener("submit", async (evento) => {
   const email = document.getElementById("email").value;
   const telefono = document.getElementById("telefono").value;
   const fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+  const nacionalidad = document.getElementById("nacionalidad").value;
   const metodo = id ? "PUT" : "POST";
   const datos = {
     id: id,
@@ -42,6 +44,7 @@ formulario.addEventListener("submit", async (evento) => {
     email: email,
     telefono: telefono,
     fecha_nacimiento: fecha_nacimiento,
+    nacionalidad: nacionalidad,
   };
 
   await fetch("api.php", {
@@ -63,6 +66,7 @@ function prepararEdicion(id, nombre, email) {
   document.getElementById("email").value = email;
   document.getElementById("telefono").value = telefono;
   document.getElementById("fecha_nacimiento").value = fecha_nacimiento;
+  document.getElementById("nacionalidad").value = nacionalidad;
 }
 
 async function eliminarUsuario(id) {
