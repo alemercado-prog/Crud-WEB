@@ -12,9 +12,10 @@ async function cargarUsuarios() {
             <tr>
                 <td>${usuario.id}</td>
                 <td>${usuario.nombre}</td>
+                <td>${usuario.apellido}</td>
                 <td>${usuario.email}</td>
                 <td>
-                    <button class="btn-editar" onclick="prepararEdicion(${usuario.id}, '${usuario.nombre}', '${usuario.email}')">Editar</button>
+                    <button class="btn-editar" onclick="prepararEdicion(${usuario.id}, '${usuario.nombre}', '${usuario.apellido}', '${usuario.email}')">Editar</button>
                     <button class="btn-eliminar" onclick="eliminarUsuario(${usuario.id})">Eliminar</button>
                 </td>
             </tr>
@@ -27,10 +28,11 @@ formulario.addEventListener("submit", async (evento) => {
 
   const id = document.getElementById("usuario_id").value;
   const nombre = document.getElementById("nombre").value;
+  const apellido = document.getElementById("apellido").value;
   const email = document.getElementById("email").value;
 
   const metodo = id ? "PUT" : "POST";
-  const datos = { id: id, nombre: nombre, email: email };
+  const datos = { id: id, nombre: nombre, apellido: apellido, email: email };
 
   await fetch("api.php", {
     method: metodo,
@@ -40,12 +42,14 @@ formulario.addEventListener("submit", async (evento) => {
 
   formulario.reset();
   document.getElementById("usuario_id").value = "";
+
   cargarUsuarios();
 });
 
 function prepararEdicion(id, nombre, email) {
   document.getElementById("usuario_id").value = id;
   document.getElementById("nombre").value = nombre;
+  document.getElementById("apellido").value = apellido;
   document.getElementById("email").value = email;
 }
 
