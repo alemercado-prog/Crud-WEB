@@ -7,14 +7,16 @@
 </head>
 <body>
     <div class="contenedor">
-        <h1>Gestion de usuarios</h1>
+        <h1 id="titulo">Gestion de usuarios</h1>
 
-        <form id="formulario"">
+        <form id="formulario">
         <input type="hidden" id="usuario_id">
 
         <input type="text" id="nombre" placeholder="Tu nombre" required>
         <input type="text" id="apellido" placeholder="Tu apellido" required>
         <input type="email" id="email" placeholder="Tu Email" required>
+        <input type="number" id="telefono" placeholder="Tu Telefono" required>
+        <input type="date" id="fecha_nacimiento" placeholder="Tu Fecha de Nacimiento" required>
 
         <button type="submit">Guardar usuario</button>
         </form>
@@ -26,6 +28,8 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Fecha de Nacimiento</th>
                     <th>Acciones</th>
                 </tr>
             </thead>

@@ -13,16 +13,28 @@ if ($metodo == "GET") {
 } elseif ($metodo == "POST") {
     $datos = json_decode(file_get_contents("php://input"));
     $stmt = $conexion->prepare(
-        "INSERT INTO usuarios (nombre,apellido,email) VALUES(?,?,?)",
+        "INSERT INTO usuarios (nombre,apellido,email,telefono,fecha_nacimiento) VALUES(?,?,?,?,?)",
     );
-    $stmt->execute([$datos->nombre, $datos->apellido, $datos->email]);
+    $stmt->execute([
+        $datos->nombre,
+        $datos->apellido,
+        $datos->email,
+        $datos->telefono,
+        $datos->fecha_nacimiento,
+    ]);
     echo json_encode(["mensaje" => "Usuario creado"]);
 } elseif ($metodo == "PUT") {
     $datos = json_decode(file_get_contents("php://input"));
     $stmt = $conexion->prepare(
-        "UPDATE usuarios SET nombre=?, apellido=?, email=? WHERE id=?",
+        "UPDATE usuarios SET nombre=?, apellido=?, email=?, telefono=?, fecha_nacimiento=? WHERE id=?",
     );
-    $stmt->execute([$datos->nombre, $datos->apellido, $datos->email]);
+    $stmt->execute([
+        $datos->nombre,
+        $datos->apellido,
+        $datos->email,
+        $datos->telefono,
+        $datos->fecha_nacimiento,
+    ]);
     echo json_encode(["mensaje" => "Usuario actualizado"]);
 } elseif ($metodo == "DELETE") {
     $id = $_GET["id"];
