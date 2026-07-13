@@ -12,6 +12,15 @@ if ($metodo == "GET") {
     echo json_encode($usuarios);
 } elseif ($metodo == "POST") {
     $datos = json_decode(file_get_contents("php://input"));
+
+    $check = $conexion->prepare("SELECT id FROM usuarios WHERE nombre=?");
+    $check->execute([$datos->nombre]);
+
+    if ($check->rowCount() > 0) {
+        echo json_encode(["error" => "Usuario ya existe"]);
+        exit;
+    }
+
     $stmt = $conexion->prepare(
         "INSERT INTO usuarios (nombre,apellido,email,telefono,fecha_nacimiento,nacionalidad) VALUES(?,?,?,?,?,?)",
     );
@@ -24,6 +33,7 @@ if ($metodo == "GET") {
         $datos->nacionalidad,
     ]);
     echo json_encode(["mensaje" => "Usuario creado"]);
+
 } elseif ($metodo == "PUT") {
     $datos = json_decode(file_get_contents("php://input"));
     $stmt = $conexion->prepare(

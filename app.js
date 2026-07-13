@@ -76,4 +76,19 @@ async function eliminarUsuario(id) {
   }
 }
 
+document.getElementById("buscador").addEventListener("input", (evento) => {
+  const textoBuscado = evento.target.value.toLowerCase();
+  const filas = document.querySelectorAll("#lista_usuarios tr");
+
+  filas.forEach(fila => {
+    const contenidoFila = fila.innerText.toLowerCase();
+
+    if (contenidoFila.includes(textoBuscado)) {
+      fila.style.display = "";
+    } else {
+      fila.style.display = "none";
+    }
+  });
+});
+
 cargarUsuarios();
